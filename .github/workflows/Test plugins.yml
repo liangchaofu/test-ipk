@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       plugins:
-        description: '输入要编译的插件名，空格分隔'
+        description: 'shadowsocks-libev'
         required: true
         default: ''
 
@@ -16,9 +16,8 @@ jobs:
       fail-fast: false
       matrix:
         sdk:
-          - 24.10.2
+          - 24.10.5
         arch:
-          - aarch64_cortex-a53
           - x86_64
 
     steps:
