@@ -27,12 +27,12 @@ PKG_INSTALL:=1
 PKG_FIXUP:=autoreconf
 PKG_USE_MIPS16:=0
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=c-ares libev libsodium mbedtls pcre
+PKG_BUILD_DEPENDS:=c-ares libev libsodium mbedtls pcre2
 
 PKG_CONFIG_DEPENDS:= \
 	CONFIG_SHADOWSOCKS_STATIC_LINK \
 	CONFIG_SHADOWSOCKS_WITH_EV \
-	CONFIG_SHADOWSOCKS_WITH_PCRE \
+	CONFIG_SHADOWSOCKS_WITH_PCRE2 \
 	CONFIG_SHADOWSOCKS_WITH_CARES \
 	CONFIG_SHADOWSOCKS_WITH_SODIUM \
 	CONFIG_SHADOWSOCKS_WITH_MBEDTLS
@@ -46,7 +46,7 @@ define Package/shadowsocks-libev
 	URL:=https://github.com/shadowsocks/shadowsocks-libev
 	DEPENDS:=+libpthread \
 		+!SHADOWSOCKS_WITH_EV:libev \
-		+!SHADOWSOCKS_WITH_PCRE:libpcre \
+		+!SHADOWSOCKS_WITH_PCRE2:libpcre2 \
 		+!SHADOWSOCKS_WITH_CARES:libcares \
 		+!SHADOWSOCKS_WITH_SODIUM:libsodium \
 		+!SHADOWSOCKS_WITH_MBEDTLS:libmbedtls
@@ -67,8 +67,8 @@ menu "Shadowsocks-libev Compile Configuration"
 				bool "static link libev."
 				default y
 
-			config SHADOWSOCKS_WITH_PCRE
-				bool "static link libpcre."
+			config SHADOWSOCKS_WITH_PCRE2
+				bool "static link libpcre2."
 				default y
 
 			config SHADOWSOCKS_WITH_CARES
@@ -101,8 +101,8 @@ ifeq ($(CONFIG_SHADOWSOCKS_STATIC_LINK),y)
 	ifeq ($(CONFIG_SHADOWSOCKS_WITH_EV),y)
 		CONFIGURE_ARGS += --with-ev="$(STAGING_DIR)/usr"
 	endif
-	ifeq ($(CONFIG_SHADOWSOCKS_WITH_PCRE),y)
-		CONFIGURE_ARGS += --with-pcre="$(STAGING_DIR)/usr"
+	ifeq ($(CONFIG_SHADOWSOCKS_WITH_PCRE2),y)
+		CONFIGURE_ARGS += --with-pcre2="$(STAGING_DIR)/usr"
 	endif
 	ifeq ($(CONFIG_SHADOWSOCKS_WITH_CARES),y)
 		CONFIGURE_ARGS += --with-cares="$(STAGING_DIR)/usr"
