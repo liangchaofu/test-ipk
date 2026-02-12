@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       plugins:
-        description: 'shadowsocks-libev'
+        description: '输入要编译的插件名，空格分隔'
         required: true
         default: ''
 
