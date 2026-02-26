@@ -80,9 +80,6 @@ define Package/shadowsocks-libev/Default
 
 endef
 
-DEPENDS_ss-local = +libpcre2
-DEPENDS_ss-server = +libcares +libpcre2
-
 SHADOWSOCKS_COMPONENTS:=ss-local ss-redir ss-tunnel ss-server
 define shadowsocks-libev/templates
   $(foreach component,$(SHADOWSOCKS_COMPONENTS),
