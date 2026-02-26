@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         sdk:
-          - 24.10.5
+          - 21.02.7
         arch:
           - x86_64
 
